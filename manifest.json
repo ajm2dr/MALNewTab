@@ -1,0 +1,14 @@
+{
+  "manifest_version": 2,
+
+  "name": "Spottab",
+  "description": "This extension is not a meme",
+  "version": "1.0",
+  "permissions": [
+    "activeTab",
+    "http://myanimelist.net/*"
+  ],
+  "chrome_url_overrides" : {
+    "newtab": "newTab.html"
+  }
+}

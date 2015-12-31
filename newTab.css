@@ -1,0 +1,57 @@
+html, body {
+    padding:0;
+    margin:0;
+    -webkit-font-smoothing: antialiased;
+   text-rendering: optimizeLegibility;
+}
+
+@keyframes fadein{
+   from{opacity:0;}
+   to{opacity:1;}
+}
+
+.picture {
+  height:100%;
+  width:100%;
+}
+
+#picture_container {
+  height:100%;
+  width:100%;
+  animation: fadein 1s;
+}
+
+.text{
+  font-family: 'Josefin Slab', serif;
+}
+
+.picture_info{
+  color: white;
+  font-size: 20px;
+  font-weight: bolder;
+}
+
+#picture_info {
+  cursor:default;
+  position: absolute;
+  border: solid white 2px;
+  background-color: #bfbfbf;
+  height: auto;
+  width: auto;
+  padding: 10px 10px 10px 10px;
+  border-radius: 25px;
+  text-align: center;
+  opacity: .8;
+  bottom: 25px;
+  right: 30px;
+}
+
+#picture_info:hover{
+    background-color: white;
+    border-color: #bfbfbf;
+}
+
+
+#picture_info:hover .picture_info {
+    color: #bfbfbf;
+}
