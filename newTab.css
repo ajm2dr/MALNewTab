@@ -144,9 +144,9 @@ font-family: 'Lato', sans-serif;
   position: absolute;
   right: 10px;
   width:10%;
-  height: 50%;
-  top: 13px;
-}
+    height: 50%;
+    top: 13px;
+  }
 
 #error{
   color: red;

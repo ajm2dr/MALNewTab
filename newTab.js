@@ -134,7 +134,7 @@ function getImage() {
     var hour = today.getHours();
     var minutes = today.getMinutes();
     var timeout = false;
-    if (year > picture_time.year || month > picture_time.month || day > picture_time.day || (hour*60+minutes > picture_time.hour*60+picture_time.minutes+30)) {
+    if (year > picture_time.year || month > picture_time.month || day > picture_time.day || (hour*60+minutes > picture_time.hour*60+picture_time.minutes+15)) {
       console.log("timeout");
       timeout = true;
     }
