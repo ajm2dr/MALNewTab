@@ -3,6 +3,8 @@ html, body {
     margin:0;
     -webkit-font-smoothing: antialiased;
    text-rendering: optimizeLegibility;
+    overflow:hidden;
+    font-family: 'Lato', sans-serif;
 }
 
 @keyframes fadein{
@@ -10,6 +12,21 @@ html, body {
    to{opacity:1;}
 }
 
+#wrapper {
+    animation: fadein 1s;
+}
+
+#hidden{
+  position:absolute;
+  z-index: -10;
+}
+
+.text, input{
+font-family: 'Lato', sans-serif;
+}
+
+
+/* Picture related styling*/
 .picture {
   height:100%;
   width:100%;
@@ -18,23 +35,17 @@ html, body {
 #picture_container {
   height:100%;
   width:100%;
-  animation: fadein 1s;
-}
-
-.text{
-  font-family: 'Josefin Slab', serif;
+  position: relative;
 }
 
 .picture_info{
   color: white;
-  font-size: 20px;
-  font-weight: bolder;
+  font-size: 1vw;
 }
 
 #picture_info {
-  cursor:default;
+  cursor:pointer;
   position: absolute;
-  border: solid white 2px;
   background-color: #bfbfbf;
   height: auto;
   width: auto;
@@ -42,16 +53,225 @@ html, body {
   border-radius: 25px;
   text-align: center;
   opacity: .8;
-  bottom: 25px;
-  right: 30px;
+  bottom: 2%;
+  right: 1%;
 }
 
 #picture_info:hover{
-    background-color: white;
-    border-color: #bfbfbf;
+    background-color: #87CEEB;
+    border-color: #87CEEB;;
+}
+
+/*End picture related styling*/
+
+/*List related styling*/
+#list_container {
+  position: absolute;
+  opacity: .9;
+  z-index: 1;
+  background-color: white;
+  width: 40%;
+  height: 100%;
+}
+
+#list {
+  overflow-y: scroll;
+}
+
+/* Let's get this party started */ /*thanks to https://css-tricks.com/examples/WebKitScrollbars/ */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: #87CEEB;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}
+::-webkit-scrollbar-thumb:window-inactive {
+	background: #87CEEB;
+}
+
+.name {
+  float: left;
+  width: 80%;
+  border: solid #bfbfbf;
+  border-right-width: 0px;
+  border-top-width: 0px;
+  height: 5%;
+  box-sizing: border-box;
+  padding: 1%;
+  font-size: 1vw;
+  color: #666666;
+}
+
+.episode{
+  padding: 1%;
+  float: left;
+  width: 20%;
+  border: solid #bfbfbf;
+  border-right-width: 0px;
+  border-top-width: 0px;
+  height: 5%;
+  box-sizing: border-box;
+  vertical-align: middle;
+  font-size: 1vw;
+  color: #666666;
+}
+
+.link_mal{
+  color: #666666;
+  font-size: 1vw;
+}
+
+#username{
+  position: relative;
+  height: 30px;
+  width: 60%;
+  left: -10%;
+}
+
+#submit{
+  position: absolute;
+  right: 10px;
+  width:10%;
+  height: 50%;
+  top: 13px;
+}
+
+#error{
+  color: red;
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  width: 100px;
+}
+
+#link {
+  z-index: 3;
+  cursor:pointer;
+  position: absolute;
+  background-color: #bfbfbf;
+  height: 40px;
+  padding-top: 9px;
+  padding-left: 10px;
+  width: 15%;
+  border-radius: 25px;
+  text-align: center;
+  opacity: .8;
+  top: 40%;
+  left: 13%;
+}
+
+#link:hover{
+    background-color: #87CEEB;
+    border-color: #87CEEB;;
+}
+
+.list_button {
+  z-index: 1;
+  height: 10%;
+  width:25%;
+  float: left;
+  border: solid #bfbfbf;
+  border-left: 2px;
+  box-sizing: border-box;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 2px;
+}
+
+.list_button:hover {
+  z-index: 1;
+  height: 10%;
+  width:25%;
+  float: left;
+  border-top: solid #bfbfbf;
+  background-color: #87CEEB;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 2px;
+}
+
+.selected {
+  background-color: #87CEEB;
+}
+
+.unselected {
+  background-color: white;
+}
+
+.button_text{
+  color: #666666;
+  font-size: 1vw;
 }
 
 
-#picture_info:hover .picture_info {
-    color: #bfbfbf;
+#list {
+  height: 90%;
+  width: 100%;
+}
+
+#list_tab{
+    cursor: pointer;
+    position: absolute;
+    opacity: .9;
+    left: 40%;
+    margin-left: -2px;
+    height: 100%;
+    width: 3%;
+    background-color: white;
+    border-left: solid #bfbfbf;
+    border-radius: 2px;
+    z-index: 1;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    background: linear-gradient(to left, #bfbfbf , white); /* Standard syntax */
+}
+
+#icon {
+    top: 2%;
+    vertical-align: middle;
+    align-content: center;
+    width: 100%;
+    padding-top: 20%;
+}
+
+#arrow_icon{
+  position:relative;
+  height: 2.5%;
+  left: 27.5%;
+}
+
+#logout {
+    position: relative;
+    top: 90%;
+    vertical-align: middle;
+    align-content: center;
+    width: 100%;
+}
+
+#logout_icon {
+    position: relative;
+    height: 4%;
+    left: 13.5%;
+}
+
+.flipped{
+  -moz-transform: scaleX(-1);
+   -o-transform: scaleX(-1);
+   -webkit-transform: scaleX(-1);
+   transform: scaleX(-1);
+   filter: FlipH;
+   -ms-filter: "FlipH";
 }

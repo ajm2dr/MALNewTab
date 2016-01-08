@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
 
-  "name": "Spottab",
-  "description": "This extension is not a meme",
+  "name": "Anime List New Tab",
+  "description": "Syncs your My Anime List (MAL, myanimelist.net) account and allows you to easily view it when you open up a new tab. If you use this onii-chan will buy u last fantasy games",
   "version": "1.0",
   "permissions": [
     "activeTab",

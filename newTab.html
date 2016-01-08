@@ -8,21 +8,50 @@
   <script src="jquery-1.11.3.js"></script>
   <script src="newTab.js"></script>
   <link rel="stylesheet" type="text/css" href="newTab.css">
-  <link href='https://fonts.googleapis.com/css?family=Josefin+Slab:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
 </head>
 <body>
   <div id="wrapper">
 <!--  <div id="list">
   <button id="linkMAL">Link MAL</button>
 </div>-->
+  <div hidden id="link">
+    <input hidden id="username" type="text" placeholder="MyAnimeList.net Username"></input>
+    <img hidden id="submit" src="enter_icon.png"></img>
+    <text hidden id="error">Invalid Username!</text>
+    <text id="linkmal" class="link_mal text">Link My Anime List (MAL)</text>
+  </div>
+  <div id="list_container">
+    <div id="list">
 
+    </div>
+
+    <div hidden class="list_button selected" id="watching_button">
+      <text class="text button_text">Watching</text>
+    </div>
+    <div hidden class="list_button unselected" id="completed_button">
+      <text class="text button_text">Completed</text>
+    </div>
+    <div hidden class="list_button unselected" id="onHold_button">
+      <text class="text button_text">On Hold</text>
+    </div>
+    <div hidden class="list_button unselected" id="planToWatch_button">
+      <text class="text button_text">Plan to Watch</text>
+    </div>
+  </div>
+  <div id="list_tab">
+    <div id="icon">
+      <img id="arrow_icon" src="x_icon.png"></img>
+    </div>
+    <div hidden id="logout"><img id="logout_icon" src="logout_icon.png"></img></div>
+  </div>
   <div id="picture_container">
     <div id="picture_info">
-      <text class="text picture_info">Haikyuu!</text>
+      <text class="text picture_info" id="picture_info"></text>
     </div>
-    <img id="picture" class="picture" src="http://when-will.net/images/artikel/2014/january/Haikyuu.jpg"></img>
+    <img id="picture" class="picture" src=""></img>
   </div>
 
-  <div id="hidden" hidden></div>
+  <div id="hidden"></div>
 </body>
 </html>
