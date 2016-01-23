@@ -8,6 +8,7 @@ var scrollWatching = 0;
 var scrollCompleted = 0;
 var scrollOnHold = 0;
 var scrollPlanToWatch = 0;
+var username = "";
 
 var clicky;
 $(document).mousedown(function(e) {
@@ -29,7 +30,9 @@ $( document ).ready(function() {
     } else if(loggedin){
       $(".list_button").show();
       $("#logout").show();
+      $("#sync").show(); // TODO:
       $("#logout").unbind("click");
+      $("#sync").unbind("click");
       $("#logout").click(function(e) {
     //    console.log("clicked");
         e.stopPropagation();
@@ -37,7 +40,15 @@ $( document ).ready(function() {
         localStorage.setItem("loggedin", loggedin);
         localStorage.setItem("MyAnimeList", null);
         $("#logout").hide();
+        $("#sync").hide();
         resetList();
+      });
+      $("#sync").click(function(e) {
+    //    console.log("clicked");
+        e.stopPropagation();
+        localStorage.setItem("MyAnimeList", null);
+        $("#list").empty();
+        getHTML(localStorage.getItem("username"));
       });
       fillTable();
     }
@@ -65,7 +76,15 @@ $( document ).ready(function() {
         localStorage.setItem("loggedin", loggedin);
         localStorage.setItem("MyAnimeList", null);
         $("#logout").hide();
+        $("#sync").hide();
         resetList();
+      });
+      $("#sync").click(function(e) {
+    //    console.log("clicked");
+        e.stopPropagation();
+        localStorage.setItem("MyAnimeList", null);
+        $("#list").empty();
+        getHTML(localStorage.getItem("username"));
       });
       fillTable();
     }
@@ -99,7 +118,9 @@ $( document ).ready(function() {
       if (e.which == 13) {
     //    console.log($("#username").val());
         $("#username").unbind("blur");
-        if ($("#username").val() != "") {
+        value =  $("#username").val();
+        localStorage.setItem("username", value);
+        if (value != "" && value.length >= 2 && value.indexOf(' ') < 0) {
           getHTML($("#username").val());
         }
         return false;    //<---- Add this line
@@ -108,7 +129,9 @@ $( document ).ready(function() {
     $("#submit").click(function(){
     //    console.log($("#username").val());
       $("#username").unbind("blur");
-      if ($("#username").val() != "") {
+      value =  $("#username").val();
+      localStorage.setItem("username", value);
+      if (value != "" && value.length > 2 && (value.indexOf(" ") < 0)) {
         getHTML($("#username").val());
       }
       return false;    //<---- Add this line
@@ -227,6 +250,7 @@ function click_open() {
   $("#list_container").animate({width:'0'},200);
   $("#list_tab").animate({left:'0'},200);
   $("#logout").hide();
+  $("#sync").hide();
   setTimeout(function(){
   }, 1000);
   $("#list_tab").unbind("click");
@@ -241,6 +265,8 @@ function click_close() {
     $("#link").fadeIn();
   } else {
     $("#logout").show();
+    $("#sync").show();
+
   }
   localStorage.setItem("open", "open");
   $(".list_element").show();
@@ -397,7 +423,7 @@ function parse(MALhtml) {
         if (e.which == 13) {
       //    console.log($("#username").val());
           $("#username").unbind("blur");
-          if ($("#username").val() != "") {
+          if  (value != "" && value.length > 2 && (value.indexOf(" ") < 0)) {
             getHTML($("#username").val());
           }
           return false;    //<---- Add this line
@@ -406,7 +432,7 @@ function parse(MALhtml) {
       $("#submit").click(function(){
       //    console.log($("#username").val());
         $("#username").unbind("blur");
-        if ($("#username").val() != "") {
+        if (value != "" && value.length > 2 && (value.indexOf(" ") < 0)) {
           getHTML($("#username").val());
         }
         return false;    //<---- Add this line
@@ -428,7 +454,9 @@ function parse(MALhtml) {
   var progress = [];
   while(anime[i].children[0].getBoundingClientRect().top < completedY) {
     watching.push(anime[i].children[0].innerText);
-    progress.push(anime[i].parentElement.parentElement.children[4].innerText);
+    var text = anime[i].parentElement.parentElement.children[4].innerText;
+    text = text.slice(0,-2);
+    progress.push(text);
     i++;
   }
   var completed = [];
@@ -442,14 +470,18 @@ function parse(MALhtml) {
   var progressOnHold = [];
   while(anime[i].children[0].getBoundingClientRect().top < planToWatchY) {
     onHold.push(anime[i].children[0].innerText);
-    progressOnHold.push(anime[i].parentElement.parentElement.children[4].innerText);
+    var text = anime[i].parentElement.parentElement.children[4].innerText;
+    text = text.slice(0,-2);
+    progressOnHold.push(text);
     i++;
   }
   var planToWatch = [];
   var numEps = [];
   for (i;i<anime.length; i++) {
     planToWatch.push(anime[i].children[0].innerText);
-    numEps.push(anime[i].parentElement.parentElement.children[4].innerText);
+    var text = anime[i].parentElement.parentElement.children[4].innerText;
+    text = text.slice(0,-2);
+    numEps.push(text);
   }
   var list = {};
   list.watching = watching;
@@ -473,6 +505,7 @@ function writeToFile(json) {
     loggedin = true;
     localStorage.setItem("loggedin", loggedin);
     $("#logout").show();
+    $("#sync").show(); // TODO:
     $("#logout").click(function(e) {
     //  console.log("clicked");
       e.stopPropagation();
@@ -480,7 +513,15 @@ function writeToFile(json) {
       localStorage.setItem("loggedin", loggedin);
       localStorage.setItem("MyAnimeList", null);
       $("#logout").hide();
+      $("#sync").hide();
       resetList();
+    });
+    $("#sync").click(function(e) {
+  //    console.log("clicked");
+      e.stopPropagation();
+      localStorage.setItem("MyAnimeList", null);
+      $("#list").empty();
+      getHTML(localStorage.getItem("username"));
     });
   //  console.log(json);
   } else {

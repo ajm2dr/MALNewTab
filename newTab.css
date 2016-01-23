@@ -2,9 +2,17 @@ html, body {
     padding:0;
     margin:0;
     -webkit-font-smoothing: antialiased;
-   text-rendering: optimizeLegibility;
+    text-rendering: optimizeLegibility;
     overflow:hidden;
     font-family: 'Lato', sans-serif;
+}
+
+.normal {
+	-webkit-filter: invert(0%);
+}
+
+.invert {
+	-webkit-filter: invert(100%);
 }
 
 @keyframes fadein{
@@ -228,7 +236,7 @@ font-family: 'Lato', sans-serif;
     left: 40%;
     margin-left: -2px;
     height: 100%;
-    width: 3%;
+    width: 2.5%;
     background-color: white;
     border-left: solid #bfbfbf;
     border-radius: 2px;
@@ -250,12 +258,12 @@ font-family: 'Lato', sans-serif;
 #arrow_icon{
   position:relative;
   height: 2.5%;
-  left: 27.5%;
+  left: 23.5%;
 }
 
 #logout {
     position: relative;
-    top: 90%;
+    top: 88%;
     vertical-align: middle;
     align-content: center;
     width: 100%;
@@ -264,8 +272,23 @@ font-family: 'Lato', sans-serif;
 #logout_icon {
     position: relative;
     height: 4%;
-    left: 13.5%;
+    left: 10.5%;
 }
+
+#sync {
+    position: relative;
+    top: 86.5%;
+    vertical-align: middle;
+    align-content: center;
+    width: 100%;
+}
+
+#sync_icon {
+    position: relative;
+    height: 4%;
+    left: 10.5%;
+}
+
 
 .flipped{
   -moz-transform: scaleX(-1);
