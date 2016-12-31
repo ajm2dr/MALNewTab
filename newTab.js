@@ -385,7 +385,7 @@ function fillTable() {
 function getHTML(username) { //TODO Make it dynamic for any user
   $.ajax({
        type: 'GET',
-       url: "http://myanimelist.net/animelist/"+username,
+       url: "https://crossorigin.me/http://myanimelist.net/animelist/"+username,
        dataType: 'html',
        success: function(data) {
       //    console.log(data);
